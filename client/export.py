@@ -30,5 +30,3 @@ def zip_files():
     f.write('exported-files/city.json')
     f.write('exported-files/arenas.json')
     f.close()
-
-export_files()

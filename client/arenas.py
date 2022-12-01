@@ -42,7 +42,7 @@ def add_arenas():
 def delete_arena(id):
     try:
         request = requests.delete(f'http://localhost:5000/arena/{id}')
-    
+
         if request.status_code == 201:
             print(colored('Arena excluida com sucesso!', 'green'))
         else:

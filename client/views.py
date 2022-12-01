@@ -14,6 +14,7 @@ def admin_menu():
     print('[ 3 ] - Cidades')
     print('[ 4 ] - Sobre')
     print('[ 5 ] - Exportar dados')
+    print('[ 6 ] - Importar arenas de Ribeirão')
     print('[ 0 ] - Encerrar sistema')
 
 def arenas_menu():
@@ -24,6 +25,14 @@ def arenas_menu():
     print('[ 1 ] - Consultar arenas')
     print('[ 2 ] - Adicionar arena')
     print(colored('[ 3 ] - Excluir arena', 'red'))
+
+def import_menu():
+    print('-----------------------------------------')
+    print('----------- Importar Arenas -------------')
+    print('-----------------------------------------')
+    print('[ 0 ] - Voltar para menu anterior')
+    print('[ 1 ] - Importar arenas de Ribeirão Preto')
+    print('[ 2 ] - Consultar arenas importadas')
 
 def city_menu():
     print('-----------------------------------------')

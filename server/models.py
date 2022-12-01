@@ -48,3 +48,11 @@ def model_city():
         constraint pk_tb_city_id primary key(id)
     );"""
 
+def model_arenas_ribeirao():
+    return """CREATE TABLE IF NOT EXISTS tb_arenas_ribeirao
+    (
+        id              serial,
+        name            varchar(50),
+
+        constraint pk_tb_arenas_ribeirao_id primary key(id)
+    );"""

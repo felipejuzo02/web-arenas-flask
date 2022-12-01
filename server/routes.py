@@ -44,11 +44,16 @@ INSERT_CITY = (
     "INSERT INTO tb_city (id, name, state) VALUES (%s, %s, %s)"
 )
 
+SELECT_ARENAS_RP = (
+    "SELECT * FROM tb_arenas_ribeirao"
+)
+
 con = models.connection()
 cursor = con.cursor()
 cursor.execute(models.model_city())
 cursor.execute(models.model_arenas())
 cursor.execute(models.model_users())
+cursor.execute(models.model_arenas_ribeirao())
 con.commit()
 con.close()
 
@@ -275,5 +280,48 @@ def delete_city(id):
         return {"message": "Excluido com sucesso", "code": 201}, 201
     except Exception as error:
         return {"message": "Erro ao excluir", "error": str(error.args)}
+
+# ARENAS RIBEIRÃO PRETO
+@app.route('/arenas-rp', methods=['GET', 'POST'])
+def handle_arenas_rp():
+    if request.method == 'GET':
+        try:
+            con = models.connection()
+
+            cursor = con.cursor(cursor_factory=RealDictCursor)
+
+            cursor.execute(SELECT_ARENAS_RP)
+            results = cursor.fetchall()
+
+            return jsonify(results)
+
+        except Exception as error:
+            print('Ocorreu um erro ao realizar a requisição')
+            print(error)
+        finally:
+            con.close()
+    else:
+        try:
+            con = models.connection()
+            data = request.get_json()
+            for i in data:
+                print(i)
+            try:
+                with con:
+                    with con.cursor() as cursor:
+                        try:
+                            for arena in data:
+                                cursor.execute(f"INSERT INTO tb_arenas_ribeirao (name) VALUES ('{arena}');")
+                        except Exception as error:
+                            print(error)
+                            return {"message": "Erro ao importar", "error": str(error.args) }, 400
+
+                con.commit()
+                return {"message": "Arenas importadas com sucesso!!", "code": 201}, 201
+
+            except Exception as error:
+                return {"error": str(error.args)}
+        except Exception:
+            print('Deu erro')
 
 app.run(port=5000, host='localhost', debug=True)

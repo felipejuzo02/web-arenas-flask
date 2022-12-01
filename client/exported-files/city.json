@@ -1,0 +1,22 @@
+[
+    {
+        "id": "jard",
+        "name": "Jardin\u00f3polis",
+        "state": "S\u00e3o Paulo"
+    },
+    {
+        "id": "rp",
+        "name": "Ribeir\u00e3o Preto",
+        "state": "S\u00e3o Paulo"
+    },
+    {
+        "id": "sant",
+        "name": "Santos",
+        "state": "Sao Paulo"
+    },
+    {
+        "id": "fran",
+        "name": "Franca",
+        "state": "Sao Paulo"
+    }
+]
